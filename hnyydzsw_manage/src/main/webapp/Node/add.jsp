@@ -33,28 +33,21 @@
 
     </style>
 </head>
-<form action="index.jsp" method="post">
+<form action="${pageContext.request.contextPath}/aboutUs/add.do" method="post" enctype="multipart/form-data">
 <table class="table table-bordered table-hover definewidth m10">
     <tr>
         <td width="10%" class="tableleft">标题</td>
-        <td><input type="text" name="grouptitle"/></td>
+        <td><input type="text" name="title"/></td>
     </tr>
     <tr>
         <td class="tableleft">内容</td>
-        <td><input type="text" name="moduletitle"/></td>
+        <td><input type="text" name="content"/></td>
     </tr>   
 	<tr>
         <td class="tableleft">图片</td>
             <td>
              <input type="file" name="file" value="0" multiple="multiple"/>
             </td>
-    </tr>
-    <tr>
-        <td class="tableleft">状态</td>
-        <td>
-            <input type="radio" name="status" value="1" checked/> 启用
-            <input type="radio" name="status" value="0"/> 禁用
-        </td>
     </tr>
     <tr>
         <td class="tableleft"></td>

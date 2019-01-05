@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Css/style.css" />
     <script type="text/javascript" src="${pageContext.request.contextPath}/Js/jquery.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/Js/jquery.sorted.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/Js/bootstrap.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/Js/ckform.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/Js/common.js"></script>
@@ -36,9 +35,7 @@
 </head>
 <body>
 <form class="form-inline definewidth m20" action="index.jsp" method="get">  
-    标题名称：
-    <input type="text" name="rolename" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;  
-    <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增</button>
+    <button type="button" class="btn btn-success" id="addnew">新增</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10" >
     <thead>
@@ -49,17 +46,18 @@
         <th>管理操作</th>
     </tr>
     </thead>
-	     <tr>
-            <td>5</td>
-            <td>管理员</td>
-			<td width="100px"><img src="C:\Users\ZH\Desktop\highlight_bg.jpg"/></td>
+    <c:forEach items="${adboutUs }" var="adboutUs">
+    <tr>
+            <td>${adboutUs.title }</td>
+            <td>${adboutUs.content }</td>
+			<td width="100px"><img src="${adboutUs.img }"/></td>
             <td>
-                  <a href="#">删除</a>
+                  <a href="${pageContext.request.contextPath}/aboutUs/remove.do?id=${adboutUs.id }">删除</a>
                   
             </td>
-        </tr></table>
-<div class="inline pull-right page">
-         10122 条记录 1/507 页  <a href='#'>下一页</a>     <span class='current'>1</span><a href='#'>2</a><a href='/chinapost/index.php?m=Label&a=index&p=3'>3</a><a href='#'>4</a><a href='#'>5</a>  <a href='#' >下5页</a> <a href='#' >最后一页</a>    </div>
+        </tr>
+    </c:forEach>
+	    </table>
 </body>
 </html>
 <script>
@@ -67,7 +65,7 @@
         
 		$('#addnew').click(function(){
 
-				window.location.href="add.jsp";
+				window.location.href="${pageContext.request.contextPath}/Node/add.jsp";
 		 });
 
 
@@ -80,7 +78,7 @@
 		if(confirm("确定要删除吗？"))
 		{
 		
-			var url = "index.jsp";
+			var url = "${pageContext.request.contextPath}/aboutUs/remove.do";
 			
 			window.location.href=url;		
 		

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manage.dao.IAboutUsDao">
+
+	<select id="findAllDao" resultType="com.manage.beans.AboutUs">
+		select
+		a.id,a.title,a.content,a.img
+		from about_as a
+		WHERE a.state=1
+	</select>
+
+	<insert id="insertAboutUsDao" parameterType="com.manage.beans.AboutUs">
+		INSERT INTO
+		about_as(title,content,img)
+		VALUE(#{title},#{content},#{img})
+	</insert>
+
+	<update id="deleteAboutUs">
+		UPDATE about_as a SET a.state=0
+		WHERE a.id=#{id}
+	</update>
+
+</mapper>
