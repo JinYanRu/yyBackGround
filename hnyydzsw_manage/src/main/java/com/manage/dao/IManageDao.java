@@ -15,5 +15,7 @@ public interface IManageDao {
 	List<T> selectAll(Map map);
 
 	void deleteCu(@Param("id") Integer id);
+	
+	void text();
 
 }
