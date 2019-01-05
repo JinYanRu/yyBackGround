@@ -33,13 +33,5 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  
-  <filter>
-   <filter-name>myfilter</filter-name>
-   <filter-class>com.manage.filter.myFilter</filter-class>
-  </filter>
-  <filter-mapping>
-   <filter-name>myfilter</filter-name>
-   <url-pattern>/manage/findAll.do</url-pattern>
-  </filter-mapping>
+ 
 </web-app>
