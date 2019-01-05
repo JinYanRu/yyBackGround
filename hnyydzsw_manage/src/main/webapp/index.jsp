@@ -38,7 +38,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/config-min.js"></script>
 <script>
     BUI.use('common/main',function(){
-        var config = [{id:'1',menu:[{text:'系统管理',items:[{id:'12',text:'关于我们',href:'Node/index.jsp'},{id:'3',text:'轮播图',href:'Role/index.jsp'},{id:'4',text:'二维码',href:'User/index.jsp'},{id:'6',text:'业务范围',href:'Menu/index.jsp'}]}]},{id:'7',homePage : '9',menu:[{text:'业务管理',items:[{id:'9',text:'查询业务',href:'Node/index.html'}]}]}];
+        var config = [{id:'1',menu:[{text:'系统管理',
+        	items:[{id:'12',text:'关于我们',href:'${pageContext.request.contextPath}/aboutUs/findAll.do'},
+        	{id:'3',text:'轮播图',href:'Role/index.jsp'},
+        	{id:'4',text:'二维码',href:'User/index.jsp'},
+        	{id:'6',text:'业务范围',href:'Menu/index.jsp'}]}]},
+        	{id:'7',homePage : '9',menu:[{text:'业务管理',items:[{id:'9',text:'查询业务',href:'Node/index.html'}]}]}];
         new PageUtil.MainPage({
             modulesConfig : config
         });
