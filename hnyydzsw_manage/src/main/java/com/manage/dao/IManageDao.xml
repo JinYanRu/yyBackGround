@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manage.dao.IManageDao">
+
+	<select id="loginUser" resultType="int" parameterType="map">
+		select
+		a.id
+		from users a
+		WHERE a.username=#{username} and
+		a.`password`=#{password}
+	</select>
+
+	<select id="selectRows" resultType="int" parameterType="String">
+		SELECT COUNT(a.id)
+		from customer a
+		<where>
+			<if test="name != null and name !=''">
+				and a.`name`=#{name}
+			</if>
+			and a.`status`=1
+		</where>
+	</select>
+
+	<select id="selectAll" parameterType="map" resultType="com.manage.beans.Manage">
+		SELECT
+		a.id,a.`name`,a.phone,a.mesage
+		from customer a
+		<where>
+			<if test="name != null and name !=''">
+				a.`name`like #{name}
+			</if>
+			and a.`status`=1
+		</where>
+		ORDER BY
+		a.date
+		limit #{PageStartIndex},#{PageSize}
+	</select>
+
+	<update id="deleteCu" parameterType="int">
+		update customer a
+		set a.`status`=0
+		WHERE a.id=#{id}
+	</update>
+</mapper>
